@@ -16,7 +16,8 @@ O KeyUp nasceu da ideia de resolver um problema comum: a dificuldade de gerencia
 
 Mais do que um gerenciador de senhas, a proposta é desenvolver um cofre digital que permita ao usuário ter controle sobre suas informações e sobre o destino delas.
 
-<img width="1888" height="898" alt="image" src="https://github.com/user-attachments/assets/69e7047c-55c8-4272-ae3c-3b8dcb98faf7" />
+<img width="1887" height="896" alt="image" src="https://github.com/user-attachments/assets/29fd7d07-ca70-4c58-b72d-b3584451364d" />
+
 
 
 ## Funcionalidades planejadas
