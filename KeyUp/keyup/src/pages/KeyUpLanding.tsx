@@ -7,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import "./keyup.css";
+import "./../styles/keyup.css";
 
 /* ---------- Ícones (SVG inline) ---------- */
 type IconName = "key" | "lock" | "file" | "note" | "shield" | "sync" | "check" | "menu" | "close";
@@ -105,9 +105,7 @@ function Header() {
     <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
       <div className="container nav-inner">
         <a href="#inicio" className="brand" aria-label="KeyUp" onClick={closeMenu}>
-          <span className="brand-mark">
-            <Icon name="key" size={18} />
-          </span>
+          <img src="src/assets/logoKeyUp.png" className="brand-mark" alt="KeyUp logo" width={48} height={48} />
           <span>KeyUp</span>
         </a>
 
@@ -119,7 +117,7 @@ function Header() {
         </nav>
 
         <div className="nav-actions">
-          <a href="/entrar" className="btn btn-ghost">
+          <a href="/app" className="btn btn-ghost">
             Acessar minha conta
           </a>
           <a href="/cadastro" className="btn btn-primary">
@@ -157,7 +155,7 @@ function Header() {
                 <a href="#sobre" onClick={closeMenu}>Sobre</a>
               </nav>
               <div className="mobile-actions">
-                <a href="/entrar" className="btn btn-glass btn-block" onClick={closeMenu}>
+                <a href="/app" className="btn btn-glass btn-block" onClick={closeMenu}>
                   Acessar minha conta
                 </a>
                 <a href="/cadastro" className="btn btn-primary btn-block" onClick={closeMenu}>

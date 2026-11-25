@@ -1,16 +1,22 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Icon, { type IconName } from "../ui/Icon";
-import Avatar from "../ui/Avatar";
+import { Icon, type IconName } from "../ui/Icon";
+import { Avatar } from "../ui/Avatar";
 import { personalCategories, type PersonalItem, type Selection, type Site } from "../../data/mockData";
 
 interface Props {
-  sites: Site[]; personal: PersonalItem[]; selection: Selection;
+  sites: Site[];
+  personal: PersonalItem[];
+  selection: Selection;
   open: boolean; onClose: () => void;
   onSelect: (s: Selection) => void; onAdd: () => void;
 }
 
-const catIcon: Record<string, IconName> = { "Cartões": "card", "Documentos": "doc", "Senhas pessoais": "key", "Outros": "file" };
+const catIcon: Record<string, IconName> = {
+  "Senhas pessoais": "key",
+  "Documentos": "doc",
+  "Notas": "note"
+};
 
 function Collapse({ open, children }: { open: boolean; children: ReactNode }) {
   return (
@@ -39,6 +45,7 @@ export default function Sidebar({ sites, personal, selection, open, onClose, onS
       .sort((a, b) => a.name.localeCompare(b.name, "pt-BR", { sensitivity: "base" })),
     [sites, term],
   );
+
   const groups = useMemo(
     () => personalCategories
       .map((c) => ({ c, items: personal.filter((p) => p.category === c && (!term || p.name.toLowerCase().includes(term))) }))
@@ -68,12 +75,10 @@ export default function Sidebar({ sites, personal, selection, open, onClose, onS
 
         <div className="sb-scroll">
           <button className={"sb-item" + (isActive("home") ? " on" : "")} aria-current={isActive("home") ? "page" : undefined}
-            onClick={() => pick({ kind: "home" })}>
-            <Icon name="home" /> Visão geral
-          </button>
+            onClick={() => pick({ kind: "home" })}><Icon name="home" /> Visão geral</button>
 
           <button className="sb-sec" aria-expanded={secOpen("personal")} onClick={() => setSections((s) => ({ ...s, personal: !s.personal }))}>
-            <span className={"chev" + (secOpen("personal") ? " open" : "")}><Icon name="chevron" size={14} /></span>Pessoais
+            <span className="chev"><Icon name="chevron" size={14} /></span>Pessoais
           </button>
           <Collapse open={secOpen("personal")}>
             {groups.map(({ c, items }) => (
@@ -95,7 +100,7 @@ export default function Sidebar({ sites, personal, selection, open, onClose, onS
           </Collapse>
 
           <button className="sb-sec" aria-expanded={secOpen("sites")} onClick={() => setSections((s) => ({ ...s, sites: !s.sites }))}>
-            <span className={"chev" + (secOpen("sites") ? " open" : "")}><Icon name="chevron" size={14} /></span>Sites<em>{sortedSites.length}</em>
+            <span className="chev"><Icon name="chevron" size={14} /></span>Sites<em>{sortedSites.length}</em>
           </button>
           <Collapse open={secOpen("sites")}>
             {sortedSites.map((s) => (
