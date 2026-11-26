@@ -117,9 +117,21 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem clamp(var(--sidebar-min), var(--sidebar-width, var(--sidebar-min)) 0.75rem);
-  border-radius: 32px 32px 0 0;
+  border-radius: var(--radius) var(--radius) 0 0;
   border-bottom: 1px solid var(--glass-border);
   background: var(--glass-bg);
+}
+
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
 }
 
 /* Pesquisa */
@@ -290,14 +302,60 @@
 
 /* ---------- Visão Geral simplificada ---------- */
 .welcome {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
 }
 
 .welcome h2 {
-  font-size: clamp(1.5rem, 3vw, 1.8rem);
+  font-size: clamp(1.75rem, 3.5vw, 2rem);
   letter-spacing: -0.03em;
   font-weight: 600;
   color: var(--text-pure);
+}
+
+/* Grid de resumo - visão geral */
+.grid-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card-summary {
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.card-summary:hover {
+  border-color: var(--accent-soft);
+  background: rgba(59, 130, 246, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-summary .icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-summary h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-pure);
+}
+
+.card-summary p {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
 }
 
 /* Cards estatísticos simplificados */

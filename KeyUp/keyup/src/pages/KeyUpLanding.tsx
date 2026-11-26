@@ -102,28 +102,31 @@ function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`nav ${scrolled ? "is-scrolled" : ""}`}>
+    <header className="w-full flex items-center justify-between px-8 py-6">
       <div className="container nav-inner">
-        <a href="#inicio" className="brand" aria-label="KeyUp" onClick={closeMenu}>
-          <img src="src/assets/logoKeyUp.png" className="brand-mark" alt="KeyUp logo" width={48} height={48} />
-          <span>KeyUp</span>
-        </a>
+        <div class="flex items-center gap-2">
+    <a href="#inicio" className="brand" aria-label="KeyUp" onClick={closeMenu}>
+      <img src="src/assets/logoKeyUp.png" className="brand-mark" alt="KeyUp logo" width={48} height={48} />
+      <span>KeyUp</span>
+    </a>
+  </div>
 
-        <nav aria-label="Principal" className="nav-links">
-          <a href="#inicio">Início</a>
-          <a href="#recursos">Recursos</a>
-          <a href="#seguranca">Segurança</a>
-          <a href="#sobre">Sobre</a>
-        </nav>
+  /* Links ao centro, visíveis apenas em telas md+ */
+  <nav class="hidden md-flex items-center gap-8">
+    <a href="#recursos" class="text-sm text-gray-300 hover:text-white transition">Recursos</a>
+    <a href="#seguranca" class="text-sm text-gray-300 hover:text-white transition">Segurança</a>
+    <a href="#sobre" class="text-sm text-gray-300 hover:text-white transition">Sobre</a>
+  </nav>
 
-        <div className="nav-actions">
-          <a href="/app" className="btn btn-ghost">
-            Acessar minha conta
-          </a>
-          <a href="/cadastro" className="btn btn-primary">
-            Começar agora
-          </a>
-        </div>
+        /* Botões à direita */
+  <div class="flex items-center gap-4">
+    <a href="/dashboard" className="btn btn-ghost">
+      Acessar minha conta
+    </a>
+    <a href="/cadastro" className="btn btn-primary">
+      Começar agora
+    </a>
+  </div>
 
         <button
           type="button"

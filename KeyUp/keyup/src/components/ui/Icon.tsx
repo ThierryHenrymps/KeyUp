@@ -1,4 +1,4 @@
-export type IconName = "key" | "lock" | "file" | "note" | "shield" | "sync" | "check" | "menu" | "close" | "home" | "chevron" | "plus" | "x" | "search" | "card" | "doc";
+export type IconName = "key" | "lock" | "file" | "note" | "shield" | "sync" | "check" | "menu" | "close" | "home" | "chevron" | "plus" | "x" | "search" | "card" | "doc" | "globe" | "clock";
 
 export const paths: Record<IconName, string> = {
   key: `<circle cx="8" cy="15" r="4" /><path d="M11 12l9-9M16 7l3 3M14 9l2 2" />`,
@@ -14,6 +14,8 @@ export const paths: Record<IconName, string> = {
   chevron: `<path d="M18 15l-6-6L6 21"/>`,
   plus: `<path d="M9 9l6 6M9 15l6-6"/>`,
   x: `<path d="M18 6L6 18"/>`,
+  globe: `<circle cx="12" cy="12" r="5" /><path d="M16 8l0 4M8 16l4 0M12 8l0 4"/>`,
+  clock: `<path d="M6 12l4-4M6 12l4 4" />`,
   search: `<path d="M21 21L21 3L3 3L3 21M21 21L3 3M21 3L3 21"/>`,
   card: `<path d="M16 7l3 3M14 9l2 2"/>`,
   doc: `<path d="M7 3h7l5 5v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1z"/>`,
@@ -23,7 +25,7 @@ export function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   const path = paths[name];
   if (!path) return null;
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       {path}
     </svg>
   );

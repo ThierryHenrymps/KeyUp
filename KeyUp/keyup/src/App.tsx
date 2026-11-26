@@ -1,6 +1,6 @@
 import KeyUpLanding from "./pages/KeyUpLanding";
-import DashboardLayout from "./components/dashboard/DashboardLayout";
+import Dashboard from "./dash/Dashboard";
 
 export default function App() {
-  return window.location.pathname.startsWith("/app") ? <DashboardLayout /> : <KeyUpLanding />;
+  return (window.location.pathname.startsWith("/app") || window.location.pathname.startsWith("/dashboard")) ? <Dashboard /> : <KeyUpLanding />;
 }
