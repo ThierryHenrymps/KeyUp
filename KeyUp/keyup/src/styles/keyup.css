@@ -79,7 +79,6 @@ footer {
   background: #020308;
 }
 
-/* Arco luminoso superior direito (igual à referência) */
 .bg .b1 {
   position: absolute;
   top: -32%;
@@ -99,7 +98,6 @@ footer {
   animation: arcFloat 18s ease-in-out infinite alternate;
 }
 
-/* Onda luminosa inferior de ponta a ponta (base azul vibrante) */
 .bg .b2 {
   position: absolute;
   left: -15%;
@@ -119,7 +117,6 @@ footer {
   animation: wavePulse 16s ease-in-out infinite alternate;
 }
 
-/* Brilho profundo atrás dos mockups */
 .bg .b3 {
   position: absolute;
   top: 22%;
@@ -223,125 +220,6 @@ footer {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ---------- Sidebar Specific ---------- */
-.sb-icon {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  margin-right: 0.5rem;
-}
-
-.sb-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 0.5rem;
-  border-radius: 999px;
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--accent-blue);
-  background: var(--accent-soft);
-  margin-left: 0.25rem;
-  vertical-align: middle;
-}
-
-.sb-sec {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius);
-  color: var(--text-soft) !important;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: background 0.15s ease, padding-left 0.15s ease;
-}
-
-.sb-sec:hover {
-  background: rgba(255, 255, 255, 0.04);
-  padding-left: 1.25rem;
-}
-
-.sb-sec .sb-icon {
-  flex-shrink: 0;
-  margin-right: 0.5rem;
-}
-
-.sb-sec span {
-  color: var(--text-soft) !important;
-}
-
-.sb-group {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-soft);
-}
-
-.sb-item.sub {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0;
-  color: var(--text-soft) !important;
-  font-size: 0.8125rem;
-  transition: color 0.15s ease;
-}
-
-.sb-item.sub:hover {
-  color: var(--text-pure) !important;
-}
-
-
-/* Botão de add na sidebar */
-.sb-add {
-  background: linear-gradient(135deg, #3b7bff 0%, #2563eb 100%);
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(59, 123, 255, 0.4);
-  width: 100%;
-  min-height: 44px;
-  padding: 0.6rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.sb-add:hover {
-  background: linear-gradient(135deg, #4f90ff 0%, #3b82f6 100%);
-  box-shadow: 0 8px 22px rgba(59, 130, 246, 0.5);
-}
-
-.sb-add:active {
-  transform: translateY(0);
-}
-
-.account-btn {
-  background: transparent;
-  color: var(--text-pure) !important;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border-soft);
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-left: 0.5rem;
-  transition: all 0.15s ease;
-  height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.account-btn:hover {
-  border-color: var(--accent-blue);
-  color: var(--accent-blue) !important;
-  background: rgba(59, 123, 255, 0.1);
-}
-
-.account-btn:focus-visible {
-  outline: 2px solid var(--accent-blue);
-  outline-offset: 2px;
-}
-
 /* ---------- Navbar ---------- */
 .nav {
   position: sticky;
@@ -392,10 +270,12 @@ footer {
   box-shadow: 0 4px 14px rgba(59, 130, 246, 0.45);
 }
 
+/* Correção aplicada aqui para garantir o alinhamento horizontal */
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2.25rem;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 2.25rem !important;
 }
 
 .nav-links a {
@@ -405,6 +285,7 @@ footer {
   font-size: 0.9375rem;
   font-weight: 500;
   transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {

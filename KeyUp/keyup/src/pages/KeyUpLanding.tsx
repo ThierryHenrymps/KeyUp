@@ -9,7 +9,6 @@ import {
 } from "framer-motion";
 import "./../styles/keyup.css";
 
-/* ---------- Ícones (SVG inline) ---------- */
 type IconName = "key" | "lock" | "file" | "note" | "shield" | "sync" | "check" | "menu" | "close";
 const paths: Record<IconName, ReactNode> = {
   key: <><circle cx="8" cy="15" r="4" /><path d="M11 12l9-9M16 7l3 3M14 9l2 2" /></>,
@@ -41,7 +40,6 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
   );
 }
 
-/* ---------- Entrada ao rolar (discreta) ---------- */
 function Reveal({
   children,
   delay = 0,
@@ -65,10 +63,9 @@ function Reveal({
   );
 }
 
-/* ---------- Header com Menu Hambúrguer Mobile ---------- */
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -102,31 +99,31 @@ function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="w-full flex items-center justify-between px-8 py-6">
+    <header className="nav">
       <div className="container nav-inner">
-        <div class="flex items-center gap-2">
-    <a href="#inicio" className="brand" aria-label="KeyUp" onClick={closeMenu}>
-      <img src="src/assets/logoKeyUp.png" className="brand-mark" alt="KeyUp logo" width={48} height={48} />
-      <span>KeyUp</span>
-    </a>
-  </div>
+        <div className="flex items-center gap-2">
+          <a href="#inicio" className="brand" aria-label="KeyUp" onClick={closeMenu}>
+            <img src="src/assets/logoKeyUp.png" className="brand-mark" alt="KeyUp logo" width={34} height={34} />
+            <span>KeyUp</span>
+          </a>
+        </div>
 
-  /* Links ao centro, visíveis apenas em telas md+ */
-  <nav class="hidden md-flex items-center gap-8">
-    <a href="#recursos" class="text-sm text-gray-300 hover:text-white transition">Recursos</a>
-    <a href="#seguranca" class="text-sm text-gray-300 hover:text-white transition">Segurança</a>
-    <a href="#sobre" class="text-sm text-gray-300 hover:text-white transition">Sobre</a>
-  </nav>
+        {/* Menu horizontal */}
+        <nav className="nav-links">
+          <a href="#inicio">Início</a>
+          <a href="#recursos">Recursos</a>
+          <a href="#sistemas">Sistemas</a>
+          <a href="#sobre">Sobre</a>
+        </nav>
 
-        /* Botões à direita */
-  <div class="flex items-center gap-4">
-    <a href="/dashboard" className="btn btn-ghost">
-      Acessar minha conta
-    </a>
-    <a href="/cadastro" className="btn btn-primary">
-      Começar agora
-    </a>
-  </div>
+        <div className="nav-actions">
+          <a href="/dashboard" className="btn btn-ghost">
+            Acessar minha conta
+          </a>
+          <a href="/cadastro" className="btn btn-primary">
+            Começar agora
+          </a>
+        </div>
 
         <button
           type="button"
@@ -154,7 +151,7 @@ function Header() {
               <nav aria-label="Menu mobile" className="mobile-links">
                 <a href="#inicio" onClick={closeMenu}>Início</a>
                 <a href="#recursos" onClick={closeMenu}>Recursos</a>
-                <a href="#seguranca" onClick={closeMenu}>Segurança</a>
+                <a href="#sistemas" onClick={closeMenu}>Sistemas</a>
                 <a href="#sobre" onClick={closeMenu}>Sobre</a>
               </nav>
               <div className="mobile-actions">
@@ -173,7 +170,6 @@ function Header() {
   );
 }
 
-/* ---------- Smartphone e desktop fictícios com vickpimenta ---------- */
 const items = [
   { n: "Apple ID", u: "vick@keyup.app", c: "#3b82f6" },
   { n: "Banco Aurora", u: "vick.pimenta", c: "#8b5cf6" },
@@ -280,7 +276,6 @@ function Float({
   );
 }
 
-/* ---------- Hero ---------- */
 function Hero() {
   const reduce = !!useReducedMotion();
   const mx = useMotionValue(0);
@@ -360,7 +355,6 @@ function Hero() {
   );
 }
 
-/* ---------- Recursos ---------- */
 const features: { icon: IconName; title: string; text: string }[] = [
   {
     icon: "key",
@@ -403,7 +397,6 @@ function Features() {
   );
 }
 
-/* ---------- Segurança ---------- */
 function Security() {
   const pts = [
     "Seus dados são criptografados antes de sair do seu dispositivo.",
@@ -411,7 +404,7 @@ function Security() {
     "Sincronização entre celular e computador, sem expor o que está guardado.",
   ];
   return (
-    <section id="seguranca" className="section section-security">
+    <section id="sistemas" className="section section-security">
       <div className="container split">
         <Reveal className="split-head">
           <span className="eyebrow">Arquitetura Zero-Knowledge</span>
@@ -434,7 +427,6 @@ function Security() {
   );
 }
 
-/* ---------- Sobre / CTA ---------- */
 function About() {
   return (
     <section id="sobre" className="section section-cta">
