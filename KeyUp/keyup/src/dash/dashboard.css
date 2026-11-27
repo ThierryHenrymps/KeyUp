@@ -1,17 +1,25 @@
-/* ---------- Variáveis ---------- */
+/* ---------- Variáveis (Sincronizadas com a Landing Page) ---------- */
 :root {
-  --bg: #03050d;
-  --blue: #2f7bff;
-  --purple: #7c5cff;
-  --text: #f2f5ff;
-  --mut: #8a94b2;
-  --glass: rgba(255,255,255,.045);
-  --line: rgba(255,255,255,.09);
+  --bg: #020308;
+  --bg-base: #020308;
+  --bg-elevated: #0a0f22;
+  --blue: #3b82f6;
+  --purple: #4f46e5;
+  --text: #ffffff;
+  --text-pure: #ffffff;
+  --text-soft: rgba(255, 255, 255, 0.86);
+  --mut: rgba(255, 255, 255, 0.55);
+  --glass: rgba(10, 15, 34, 0.62);
+  --glass-bg: rgba(10, 15, 34, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --line: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.08);
   --ok: #3ddc97;
   --warn: #ffb84d;
   --bad: #ff6b7a;
   --radius: 12px;
-  --bg-elevated: #0a0f22;
+  --nav-height: 76px;
+  --section-space: clamp(4.25rem, 7vw, 6.5rem);
 }
 
 /* ---------- Reset Global ---------- */
@@ -22,11 +30,11 @@
 html, body, #root {
   width: 100%;
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  max-width: none;
-  border: none;
-  outline: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  border: none !important;
+  outline: none !important;
   background-color: var(--bg) !important;
   color: var(--text) !important;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
@@ -40,21 +48,24 @@ section, footer {
   scroll-margin-top: 84px;
 }
 
-/* ---------- Estrutura ---------- */
+/* ---------- Estrutura Responsiva com Grid Adaptativa ---------- */
 .app {
   display: grid;
-  grid-template-columns: 230px 330px 1fr;
-  height: 100%;
-  padding: 14px;
+  grid-template-columns: 240px 340px minmax(0, 1fr);
+  height: 100vh;
+  max-height: 100vh;
+  padding: 16px;
   gap: 12px;
+  overflow: hidden;
 }
 
 .panel {
   background: var(--glass);
-  border: 1px solid var(--line);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -70,16 +81,17 @@ section, footer {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: -.01em;
+  color: #fff;
 }
 
 .logo {
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: linear-gradient(145deg, var(--blue), var(--purple));
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   display: grid;
   place-items: center;
-  box-shadow: 0 4px 18px rgba(47,123,255, .45);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.45);
   color: #fff;
 }
 
@@ -93,7 +105,7 @@ nav {
   padding: 6px 10px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 /* ---------- Sidebar Categorias ---------- */
@@ -101,11 +113,14 @@ nav {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 9px 10px;
+  padding: 10px 12px;
   border-radius: var(--radius);
   color: var(--mut);
   text-align: left;
   width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition: background .15s, color .15s;
 }
 
@@ -116,12 +131,12 @@ nav {
 }
 
 .nav:hover {
-  background: rgba(255,255,255, .05);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text);
 }
 
 .nav[aria-current=true] {
-  background: rgba(47,123,255, .18);
+  background: rgba(59, 123, 255, 0.18);
   color: var(--text);
   font-weight: 600;
 }
@@ -140,10 +155,10 @@ nav {
 
 /* ---------- Saúde do cofre ---------- */
 .health {
-  border: 1px solid var(--line);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   padding: 14px;
-  background: linear-gradient(160deg, rgba(47,123,255, .14), rgba(124,92,255, .08));
+  background: linear-gradient(160deg, rgba(59, 130, 246, 0.12), rgba(79, 70, 229, 0.06));
 }
 
 .health small {
@@ -153,19 +168,16 @@ nav {
 }
 
 .health b {
-  font-size: 22px;
+  font-size: 20px;
   letter-spacing: -.02em;
-}
-
-.health .bar {
-  margin-top: 8px;
 }
 
 .bar {
   height: 5px;
   border-radius: 5px;
-  background: rgba(255,255,255, .1);
+  background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
+  margin-top: 8px;
 }
 
 .bar i {
@@ -173,10 +185,10 @@ nav {
   height: 100%;
   border-radius: 5px;
   transition: width .3s;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .bar.strength {
-  margin-top: 8px;
   max-width: 220px;
 }
 
@@ -195,7 +207,7 @@ nav {
   height: 7px;
   border-radius: 50%;
   background: var(--ok);
-  box-shadow: 0 0 0 3px rgba(61,220,151, .18);
+  box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.18);
 }
 
 /* ---------- Área Superior ---------- */
@@ -203,7 +215,7 @@ nav {
   display: flex;
   gap: 8px;
   padding: 14px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .search {
@@ -212,10 +224,10 @@ nav {
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  height: 38px;
+  height: 40px;
   border-radius: 11px;
-  background: rgba(0,0,0, .35);
-  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-soft);
 }
 
 .search svg {
@@ -230,6 +242,7 @@ nav {
   border: 0;
   outline: 0;
   min-width: 0;
+  color: var(--text);
 }
 
 .search:focus-within {
@@ -238,17 +251,27 @@ nav {
 
 /* ---------- Botão Adicionar ---------- */
 .add {
-  height: 38px;
-  padding: 0 14px;
+  height: 40px;
+  padding: 0 16px;
   border-radius: 11px;
-  background: linear-gradient(180deg, #3d86ff, #2468e6);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   font-weight: 600;
-  box-shadow: 0 6px 18px rgba(47,123,255, .35);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 26px rgba(37, 99, 235, 0.45);
+  transition: all 0.15s ease;
+}
+
+.add:hover {
+  background: linear-gradient(135deg, #4f90ff 0%, #3b82f6 100%);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.6);
+  transform: translateY(-1px);
 }
 
 /* ---------- Lista ---------- */
 .list {
-  overflow: auto;
+  overflow-y: auto;
   padding: 8px;
   flex: 1;
 }
@@ -268,20 +291,24 @@ nav {
   padding: 10px;
   border-radius: var(--radius);
   text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   transition: background .15s;
 }
 
 .row:hover {
-  background: rgba(255,255,255, .05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .row[aria-selected=true] {
-  background: rgba(255,255,255, .09);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .row b {
   display: block;
   font-weight: 600;
+  color: var(--text);
 }
 
 .row span {
@@ -291,6 +318,8 @@ nav {
 
 /* ---------- Ícone ---------- */
 .ico {
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius);
   display: grid;
   place-items: center;
@@ -299,12 +328,12 @@ nav {
 }
 
 .ico.blue {
-  background: rgba(47,123,255, .22);
+  background: rgba(59, 123, 255, 0.22);
   color: #6aa3ff;
 }
 
 .ico.purple {
-  background: rgba(124,92,255, .24);
+  background: rgba(79, 70, 229, 0.24);
   color: #a794ff;
 }
 
@@ -316,7 +345,9 @@ nav {
 
 /* ---------- Detalhes ---------- */
 .detail {
-  overflow: auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .dh {
@@ -324,6 +355,7 @@ nav {
   align-items: center;
   gap: 16px;
   padding: 26px 28px 20px;
+  flex-wrap: wrap;
 }
 
 .dh h1 {
@@ -345,25 +377,28 @@ nav {
 }
 
 .ghost {
-  height: 34px;
+  height: 36px;
   padding: 0 14px;
   border-radius: var(--radius);
-  border: 1px solid var(--line);
+  border: 1px solid var(--border-soft);
   background: var(--glass);
-  transition: background .15s;
+  color: var(--text);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
 }
 
 .ghost:hover {
-  background: rgba(255,255,255, .1);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ---------- Campos ---------- */
 .fields {
   margin: 0 28px 28px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border-soft);
   border-radius: var(--radius);
   overflow: hidden;
-  background: rgba(0,0,0, .2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .f {
@@ -371,7 +406,7 @@ nav {
   align-items: center;
   gap: 12px;
   padding: 14px 18px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--border-soft);
 }
 
 .f:first-child {
@@ -410,16 +445,19 @@ nav {
 
 /* ---------- Mini botão ---------- */
 .mini {
-  height: 30px;
+  height: 32px;
   padding: 0 11px;
   border-radius: var(--radius);
   color: var(--mut);
+  background: transparent;
+  border: none;
+  cursor: pointer;
   font-size: 12.5px;
 }
 
 .mini:hover {
   color: var(--text);
-  background: rgba(255,255,255, .08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ---------- Meta ---------- */
@@ -436,7 +474,7 @@ nav {
   gap: 8px;
   padding: 7px 12px;
   border-radius: 999px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--border-soft);
   background: var(--glass);
   font-size: 12.5px;
   color: var(--mut);
@@ -458,9 +496,11 @@ nav {
   pointer-events: none;
   padding: 10px 16px;
   border-radius: var(--radius);
-  background: rgba(20,28,58, .95);
-  border: 1px solid var(--line);
+  background: rgba(10, 15, 34, 0.95);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   transition: .25s;
+  z-index: 100;
 }
 
 .toast.on {
@@ -468,49 +508,92 @@ nav {
   transform: translate(-50%, 0);
 }
 
-/* ---------- Responsividade ---------- */
-@media (max-width: 980px) {
+/* ---------- Responsividade Avançada (Mobile, Tablets e Desktops) ---------- */
+@media (max-width: 1100px) {
   .app {
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1.2fr);
-  }
-  .panel.side {
-    grid-row: 1/3;
-  }
-  .detail {
-    grid-column: 2;
+    grid-template-columns: 200px 300px minmax(0, 1fr);
   }
 }
 
-@media (max-width: 640px) {
-  body { overflow: auto; }
+@media (max-width: 900px) {
+  .app {
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  .panel.side {
+    grid-row: 1 / 3;
+  }
+  .panel.detail {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 500px;
+  }
+}
+
+@media (max-width: 680px) {
+  html, body {
+    overflow-y: auto !important;
+  }
   .app {
     display: flex;
     flex-direction: column;
     height: auto;
+    padding: 8px;
+    gap: 8px;
+  }
+  .panel {
+    width: 100%;
+    max-height: none !important;
+  }
+  .panel.side {
+    order: 1;
   }
   .side-foot {
     display: none;
   }
   nav {
     flex-direction: row;
-    overflow: auto;
+    overflow-x: auto;
+    padding: 8px;
+    gap: 6px;
   }
   .nav {
     width: auto;
     white-space: nowrap;
+    padding: 8px 12px;
+  }
+  .panel.list-panel {
+    order: 2;
+    max-height: 380px;
   }
   .list {
-    max-height: 320px;
+    max-height: 280px;
+  }
+  .panel.detail {
+    order: 3;
+    min-height: auto;
   }
   .dh {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
   }
   .acts {
     margin-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .fields, .meta {
+    margin: 0 16px 16px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }
