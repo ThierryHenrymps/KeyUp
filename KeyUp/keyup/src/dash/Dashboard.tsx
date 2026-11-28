@@ -500,32 +500,40 @@ export default function Dashboard() {
 
   return (
     <div className="app">
-      <Sidebar items={items} filter={filter} onFilter={setFilter} />
-      <ItemList
-        items={visible}
-        selectedId={selectedId}
-        query={query}
-        onQuery={setQuery}
-        onSelect={setSelectedId}
-        onAdd={() => show("Novo item em breve")}
-      />
-      <main className="panel detail">
-        <AnimatePresence mode="wait" initial={false}>
-          {selected ? (
-            <motion.div
-              key={selected.id}
-              initial={reduce ? false : { opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.16 }}
-            >
-              <ItemDetail item={selected} onFavorite={toggleFavorite} onCopy={copy} onToast={show} />
-            </motion.div>
-          ) : (
-            <div className="empty">Selecione um item para ver os detalhes.</div>
-          )}
-        </AnimatePresence>
-      </main>
+      <div className="sidebar">
+        <Sidebar items={items} filter={filter} onFilter={setFilter} />
+      </div>
+      <div className="main-panel">
+        <div className="list-panel">
+          <ItemList
+            items={visible}
+            selectedId={selectedId}
+            query={query}
+            onQuery={setQuery}
+            onSelect={setSelectedId}
+            onAdd={() => show("Novo item em breve")}
+          />
+        </div>
+        <div className="detail-panel">
+          <main className="panel detail">
+            <AnimatePresence mode="wait" initial={false}>
+              {selected ? (
+                <motion.div
+                  key={selected.id}
+                  initial={reduce ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.16 }}
+                >
+                  <ItemDetail item={selected} onFavorite={toggleFavorite} onCopy={copy} onToast={show} />
+                </motion.div>
+              ) : (
+                <div className="empty">Selecione um item para ver os detalhes.</div>
+              )}
+            </AnimatePresence>
+          </main>
+        </div>
+      </div>
       <div className={`toast ${msg ? "on" : ""}`} role="status">
         {msg}
       </div>
